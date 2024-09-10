@@ -1,5 +1,8 @@
 <?php
 class Member {
+    // Constant Values
+    const ADMIN_ROLE = 'admin';
+    const DEFAULT_ROLE = 'member';
 
     // Instance Properties
     public string $username;
@@ -15,7 +18,7 @@ class Member {
 
     }
     public function postMessageToChat() {
-        
+
     }
 
 }
