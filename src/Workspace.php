@@ -9,10 +9,12 @@ class Workspace
     public static string $urlDomain = '.flack.app';
 
     public function __construct(
-
+        public string $subdomain,
+        public Member $admin,
     )
     {
-        //
+        $this->setUrl($subdomain);
+        $this->setAdmin($admin);
     }
 
     public function setUrl(string $subdomain)
@@ -47,9 +49,18 @@ class Workspace
 
     public function hasMember(Member $member)
     {
-        return in_array(
+        /*return in_array(
+            $member->username,
+            array_map(fn($member) => $member->username, $this->members)
+        );*/
+
+        $isMember = in_array(
             $member->username,
             array_map(fn($member) => $member->username, $this->members)
         );
+
+        return $isMember
+        ? "User {$member->username} is a member."
+            : "User {$member->username} is not a member.";
     }
 }
